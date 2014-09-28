@@ -10,9 +10,3 @@ RUN sed 's/^daemonize yes/daemonize no/' -i /etc/redis/redis.conf \
  && sed 's,^# unixsocket /tmp/redis.sock,unixsocket /run/redis/redis.sock,' -i /etc/redis/redis.conf \
  && sed 's/^# unixsocketperm 700/unixsocketperm 777/' -i /etc/redis/redis.conf \
  && sed '/^logfile/d' -i /etc/redis/redis.conf
-
-EXPOSE 6379
-
-VOLUME ["/data"]
-
-ENTRYPOINT ["/usr/local/bin/redis-server", "--dir", "/data"]
